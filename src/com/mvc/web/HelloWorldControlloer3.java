@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HelloWorldControlloer3{
 
-	@RequestMapping("/hello4")
+	@RequestMapping("/hello4.do")
 	public ModelAndView hello()  {
 		System.out.println("controller3333.........");
 		
@@ -15,7 +15,7 @@ public class HelloWorldControlloer3{
 		
 		mav.addObject("message", "HelloWorld333333333333333!!!");
 		
-		mav.setViewName("/WEB-INF/jsp/hello.jsp");
+		mav.setViewName("hello");
 		
 		return mav;
 	}

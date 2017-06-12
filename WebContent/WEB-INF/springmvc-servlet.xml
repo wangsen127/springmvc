@@ -54,7 +54,10 @@
     <!-- 视图解析器 
     	 解析jsp默认需要使用jstl的包
     -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"></bean>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<property name="prefix" value="/WEB-INF/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
     
     <!-- 处理器 -->
     <bean id="helloWorldControlloer" name="/hello.do" class="com.mvc.web.HelloWorldControlloer"/>
