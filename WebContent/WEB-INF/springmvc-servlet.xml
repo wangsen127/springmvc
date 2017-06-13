@@ -14,52 +14,42 @@
     >
     
     <context:component-scan base-package="com.mvc.web"></context:component-scan>
-    <!-- 处理映射器HandlerMapping
-    	 BeanNameUrlHandlerMapping:
-    	 将bean的name作为ulr进行查询处理器，需要在配置Handler时指定beanname
-    	 SimpleUrlHandlerMapping:
-    	 将url与bean的id绑定
-     -->
-    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
-    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-    	<property name="mappings">
-    		<props>
-    			<prop key="/hello1.do">helloWorldControlloer</prop>
-    			<prop key="/hello2.do">helloWorldControlloer</prop>
-    			<prop key="/hello3.do">helloWorldControlloer2</prop>
-    		</props>
-    	</property>
-    </bean>
     
-    <!-- 处理适配器HandlerAdapter
-    	 SimpleControllerHandlerAdapter:
-    	 要求编写Handler时，必须实现Controller接口
-    	 HttpRequestHandlerAdapter:
-    	 要求编写Handler时，必须实现HttpRequestHandler接口
-     -->
-    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
-    <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"></bean>
-    
-    <!-- 注解处理映射器 -->
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
-	<!-- 注解处理适配器 -->    
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
-    
-    <!-- mvc:annotation-driven
-    	 使用mvc:annotation-driven标签替代注解处理映射器和注解处理适配器的配置
-    	 而且默认加载了很多参数绑定的方法，比如json转换解析器
-     -->
-    <!-- <mvc:annotation-driven></mvc:annotation-driven> -->
-
-    <!-- 视图解析器 
-    	 解析jsp默认需要使用jstl的包
-    -->
+    <!-- mvc:annotation-driven -->
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+	
+	<!-- 日期类型转换器 -->
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<!-- <property name="converters">
+			<list>
+				<bean class="com.mvc.converter.DateConverter"/>
+			</list>
+		</property> -->
+		<property name="formatters">
+			<bean class="com.mvc.converter.DateFormatter">
+				<constructor-arg value="MM/dd/yyyy"></constructor-arg>
+			</bean>
+		</property>
+	</bean>
+	
+    <!-- 视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     	<property name="prefix" value="/WEB-INF/jsp/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
+   
+    <!-- 配置拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/regist.html"/>
+			<bean class="com.mvc.interceptor.EncodeInterceptor"/>
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/*.do"/>
+			<bean class="com.mvc.interceptor.HelloInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>    
     
-    <!-- 处理器 -->
-    <bean id="helloWorldControlloer" name="/hello.do" class="com.mvc.web.HelloWorldControlloer"/>
-    <bean id="helloWorldControlloer2" class="com.mvc.web.HelloWorldControlloer2"/>
 </beans>

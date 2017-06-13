@@ -9,7 +9,7 @@
 <body>
 	<center>
 		<h3>注册信息</h3>
-		<form action="regist.do" method="post">
+		<form action="regist2.do" method="post">
 		<table border="0">
 			<tr align="left">
 				<td>用户名：</td>
@@ -18,6 +18,10 @@
 			<tr align="left">
 				<td>密码：</td>
 				<td><input name="password"/></td>
+			</tr>
+			<tr align="left">
+				<td>日期：</td>
+				<td><input name="birthday"/></td>
 			</tr>
 			<tr align="center">
 				<td colspan="2"><input type="submit" value="注册"/></td>
