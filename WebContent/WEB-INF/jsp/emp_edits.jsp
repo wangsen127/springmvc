@@ -31,17 +31,18 @@
 			</tr>
 			<c:forEach items="${emplist }" var="emp" varStatus="vs">
 			<tr>
-				<td><input name="emps.eid" value="${emp.eid }" readonly="readonly"/></td>				
-				<td><input name="emps.ename" value="${emp.ename }"/></td>				
-				<td><input name="emps.sal" value="${emp.sal }"/></td>
-				<td><input name="emps.hireDate" value="<fmt:formatDate value='${emp.hireDate }' pattern='yyyy-MM-dd'/>"/></td>				
+				<td><input name="emps[${vs.index }].eid" value="${emp.eid }" readonly="readonly"/></td>				
+				<td><input name="emps[${vs.index }].ename" value="${emp.ename }"/></td>				
+				<td><input name="emps[${vs.index }].sal" value="${emp.sal }"/></td>
+				<td><input name="emps[${vs.index }].hireDate" value="<fmt:formatDate value='${emp.hireDate }' pattern='yyyy-MM-dd'/>"/></td>				
 				<td>
-					<select name="emps.dept.did">
+					<select name="emps[${vs.index }].dept.did">
 						<option value="0">--请选择--</option>
 						<c:forEach items="${deptlist }" var="dept">
 						<option value="${dept.did }" <c:if test="${emp.dept.did==dept.did }">selected</c:if>>${dept.dname }</option>
 						</c:forEach>
 					</select>
+					<input type="hidden" name="emps[${vs.index }].dept.dname" value="${emp.dept.dname }"/>
 				</td>				
 			</tr>
 			</c:forEach>

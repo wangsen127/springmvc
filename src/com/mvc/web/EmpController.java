@@ -33,7 +33,7 @@ public class EmpController {
 	}
 	
 	@RequestMapping("/delEmpAll.do")
-	public String delEmpAll(HttpServletResponse response, Integer[] ids){
+	public String delEmpAll(Integer[] ids){
 		
 		empDao.delEmp(ids);
 		
@@ -54,12 +54,52 @@ public class EmpController {
 	
 	@RequestMapping("/editsEmp.do")
 	public String editsEmp(EmpCustm empCustm){
-		
 		for (Emp emp : empCustm.getEmps()) {
-			System.out.println(emp);
+			empDao.editEmp(emp);
 		}
+		return "redirect:listEmp.do";
+	}
+	
+	@RequestMapping("/showSaveEmp.do")
+	public String showSaveEmp(HttpServletRequest request){
+		List<Dept> deptlist = empDao.listDept();
+		
+		request.setAttribute("deptlist", deptlist);
+		return "emp_save";
+	}
+	
+	@RequestMapping("/saveEmp.do")
+	public String saveEmp(Emp emp){
+		
+		empDao.saveEmp(emp);
 		
 		return "redirect:listEmp.do";
 	}
 	
+	@RequestMapping("/showEditEmp.do")
+	public String showEditEmp(HttpServletRequest request, Integer eid){
+		List<Dept> deptlist = empDao.listDept();
+		Emp emp = empDao.getEmp(eid);
+		
+		request.setAttribute("deptlist", deptlist);
+		request.setAttribute("emp", emp);
+		
+		return "emp_edit";
+	}
+	
+	@RequestMapping("/editEmp.do")
+	public String editEmp(Emp emp){
+		
+		empDao.editEmp(emp);
+		
+		return "redirect:listEmp.do";
+	}
+	
+	@RequestMapping("/delEmp.do")
+	public String delEmp(Integer eid){
+		
+		empDao.delEmp(eid);
+		
+		return "redirect:listEmp.do";
+	}
 }

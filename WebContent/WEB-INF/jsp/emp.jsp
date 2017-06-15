@@ -30,6 +30,7 @@
 				<td>员工姓名:<input name="ename"></td>	
 				<td>
 					<input type="submit" value="查询">
+					<input type="button" value="新增" onclick="location.href='showSaveEmp.do'">
 					<input type="button" value="批量修改" onclick="location.href='showEditsEmp.do'">
 					<input type="button" value="批量删除" onclick="delEmp()">
 				</td>				
@@ -58,9 +59,9 @@
 				<td>${emp.dept.did }&nbsp;</td>				
 				<td>${emp.dept.dname }&nbsp;</td>				
 				<td>
-					<a href="###">修改</a>
+					<a href="showEditEmp.do?eid=${emp.eid }">修改</a>
 					&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="###">删除</a>
+					<a href="delEmp.do?eid=${emp.eid }">删除</a>
 				</td>				
 			</tr>
 			</c:forEach>

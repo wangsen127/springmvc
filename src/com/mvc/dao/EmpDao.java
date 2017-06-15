@@ -12,10 +12,53 @@ import com.mvc.pojo.Emp;
 @Repository
 public class EmpDao {
 
-	private List<Emp> emplist = new ArrayList<Emp>();;
-	private List<Dept> deptlist = new ArrayList<Dept>();;
+	private List<Emp> emplist = new ArrayList<Emp>();
+	private List<Dept> deptlist = new ArrayList<Dept>();
 	/**
-	 * 模拟删除emp
+	 * 模拟保存
+	 */
+	public void saveEmp(Emp emp){
+		emp.setEid(emplist.get(emplist.size()-1).getEid()+1);
+		emplist.add(emp);
+	}
+	/**
+	 * 模拟修改
+	 */
+	public void editEmp(Emp emp){
+		for (int i = 0; i < emplist.size(); i++) {
+			Emp e = emplist.get(i);
+			if(e.getEid().equals(emp.getEid())){
+				emplist.set(i, emp);
+				break;
+			}
+		}
+	}
+	/**
+	 * 模拟修改
+	 */
+	public void delEmp(Integer eid){
+		for (int i = 0; i < emplist.size(); i++) {
+			Emp e = emplist.get(i);
+			if(e.getEid().equals(eid)){
+				emplist.remove(i);
+				break;
+			}
+		}
+	}
+	/**
+	 * 模拟查询单个
+	 */
+	public Emp getEmp(Integer eid){
+		for (int i = 0; i < emplist.size(); i++) {
+			Emp e = emplist.get(i);
+			if(e.getEid().equals(eid)){
+				return e;
+			}
+		}
+		return null;
+	}
+	/**
+	 * 模拟批量删除emp
 	 */
 	public void delEmp(Integer[] ids){
 		if(ids != null && ids.length!=0){
