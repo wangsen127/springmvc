@@ -8,7 +8,8 @@
 </head>
 <body>
 	<center>
-	<a href="regist.html">注册页面</a>
+	<a href="regist.html">注册页面</a><br>
+	<a href="listEmp.do">员工页面</a><br>
 	</center>
 </body>
 </html>
