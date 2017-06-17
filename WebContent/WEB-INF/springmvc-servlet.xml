@@ -52,4 +52,24 @@
 		</mvc:interceptor>
 	</mvc:interceptors>    
     
+    <!-- 数据校验框架 -->
+   	<!-- 校验器 -->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+    	<property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+    	<!-- 指定校验使用的资源文件，如果不指定，默认使用classpath下的ValidationMessages.properties -->
+    	<property name="validationMessageSource" ref="messageSource"/>
+    </bean>
+    <!-- 校验错误信息配置文件 -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    	<!-- 资源文件名称 -->
+    	<property name="basename">
+    		<list>
+    			<value>classpath:validatemessages</value>
+    		</list>
+    	</property>
+    	<!-- 资源文件编码格式 -->
+    	<property name="fileEncodings" value="UTF-8"/>
+    	<!-- 资源文件的缓存时间，单位秒 -->
+    	<property name="cacheSeconds" value="120"/>
+    </bean>
 </beans>

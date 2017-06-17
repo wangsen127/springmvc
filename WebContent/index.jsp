@@ -10,6 +10,7 @@
 	<center>
 	<a href="regist.html">注册页面</a><br>
 	<a href="listEmp.do">员工页面</a><br>
+	<a href="showMap.do">测试map集合类型的参数</a><br>
 	</center>
 </body>
 </html>
