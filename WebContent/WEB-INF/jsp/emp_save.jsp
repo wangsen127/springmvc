@@ -23,19 +23,22 @@
 <body>
 	<center>
 		<h3>新增员工</h3>
+		<c:forEach items="${allErrors }" var="error">
+		<font style="color: red;">${error.defaultMessage }</font><br>
+		</c:forEach>
 		<form action="saveEmp.do" method="post">
 		<table border="0">
 			<tr>
 				<td>员工姓名:</td>
-				<td><input name="ename"></td>
+				<td><input name="ename" value="${empBean.ename }"/></td>
 			</tr>
 			<tr>
 				<td>薪&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资:</td>
-				<td><input name="sal"></td>
+				<td><input name="sal" value="${empBean.sal }"/></td>
 			</tr>
 			<tr>
 				<td>入职日期:</td>
-				<td><input name="hireDate"></td>
+				<td><input name="hireDate" value="<fmt:formatDate value='${empBean.hireDate }' pattern='yyyy-MM-dd'/>"/></td>
 			</tr>
 			<tr>
 				<td>部门名称:</td>
@@ -43,7 +46,7 @@
 					<select id="dept.did" name="dept.did" onchange="setDname()">
 						<option value="0">--请选择--</option>
 						<c:forEach items="${deptlist }" var="dept">
-						<option value="${dept.did }">${dept.dname }</option>
+						<option value="${dept.did }" <c:if test="${empBean.dept.did==dept.did }">selected</c:if>>${dept.dname }</option>
 						</c:forEach>
 					</select>
 					<input id="dept.dname" type="hidden" name="dept.dname"/>

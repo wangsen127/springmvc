@@ -16,7 +16,8 @@
     <context:component-scan base-package="com.mvc"></context:component-scan>
     
     <!-- mvc:annotation-driven -->
-    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+    <mvc:annotation-driven conversion-service="conversionService" validator="validator">
+    </mvc:annotation-driven>
 	
 	<!-- 日期类型转换器 -->
 	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
@@ -62,7 +63,7 @@
     <!-- 校验错误信息配置文件 -->
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
     	<!-- 资源文件名称 -->
-    	<property name="basename">
+    	<property name="basenames">
     		<list>
     			<value>classpath:validatemessages</value>
     		</list>

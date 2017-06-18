@@ -17,14 +17,14 @@ public class EmpDao {
 	/**
 	 * 模拟保存
 	 */
-	public void saveEmp(Emp emp){
+	public void saveEmp(Emp emp) throws Exception{
 		emp.setEid(emplist.get(emplist.size()-1).getEid()+1);
 		emplist.add(emp);
 	}
 	/**
 	 * 模拟修改
 	 */
-	public void editEmp(Emp emp){
+	public void editEmp(Emp emp)  throws Exception{
 		for (int i = 0; i < emplist.size(); i++) {
 			Emp e = emplist.get(i);
 			if(e.getEid().equals(emp.getEid())){
@@ -36,7 +36,7 @@ public class EmpDao {
 	/**
 	 * 模拟修改
 	 */
-	public void delEmp(Integer eid){
+	public void delEmp(Integer eid)  throws Exception{
 		for (int i = 0; i < emplist.size(); i++) {
 			Emp e = emplist.get(i);
 			if(e.getEid().equals(eid)){
@@ -48,7 +48,7 @@ public class EmpDao {
 	/**
 	 * 模拟查询单个
 	 */
-	public Emp getEmp(Integer eid){
+	public Emp getEmp(Integer eid)  throws Exception{
 		for (int i = 0; i < emplist.size(); i++) {
 			Emp e = emplist.get(i);
 			if(e.getEid().equals(eid)){
@@ -60,7 +60,7 @@ public class EmpDao {
 	/**
 	 * 模拟批量删除emp
 	 */
-	public void delEmp(Integer[] ids){
+	public void delEmp(Integer[] ids)  throws Exception{
 		if(ids != null && ids.length!=0){
 			for (Integer id : ids) {
 				for (Emp e : emplist) {
@@ -75,7 +75,7 @@ public class EmpDao {
 	/**
 	 * 模拟条件查询
 	 */
-	public List<Emp> listEmp(Emp emp){
+	public List<Emp> listEmp(Emp emp)  throws Exception{
 		List<Emp> list = new ArrayList<Emp>();
 		if(emp.getEname()==null && emp.getDept()==null
 				|| emp.getEname().equals("") && emp.getDept().getDid().equals(0)){
@@ -107,13 +107,13 @@ public class EmpDao {
 	/**
 	 * 模拟查询全部dept
 	 */
-	public List<Dept> listDept(){
+	public List<Dept> listDept()  throws Exception{
 		return deptlist;
 	}
 	/**
 	 * 模拟查询全部emp
 	 */
-	public List<Emp> listEmpAll(){
+	public List<Emp> listEmpAll()  throws Exception{
 		return emplist;
 	}
 	/**
