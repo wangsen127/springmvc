@@ -8,5 +8,7 @@
 </head>
 <body>
 	成功。。。。
+	<br>
+	<img src="/up/${fileName }">
 </body>
 </html>

@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Administrator
  *
  */
-@Component
+//@Component
 public class CustomExceptionResolver implements HandlerExceptionResolver{
 
 	/**
@@ -29,7 +29,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver{
 		if(ex instanceof CustomException){
 			customException = (CustomException) ex;
 		}else{
-			customException = new CustomException("未知错误");
+			customException = new CustomException("未知错误"+ex.getMessage());
 		}
 		
 		String message = customException.getMessage();

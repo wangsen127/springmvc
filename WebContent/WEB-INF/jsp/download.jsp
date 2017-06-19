@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,12 +9,10 @@
 </head>
 <body>
 	<center>
-	<a href="regist.html">注册页面</a><br>
-	<a href="listEmp.do">员工页面</a><br>
-	<a href="showMap.do">测试map集合类型的参数</a><br>
-	<a href="showUpload.do">测试文件上传</a><br>
-	<a href="showUpload2.do">测试多文件上传</a><br>
-	<a href="showDownload.do">测试文件下载</a><br>
+		<h3>文件列表</h3>
+		<c:forEach items="${filelist }" var="name">
+			<img src="/up/${name}" width="50" height="50"><a href="download.do?fileName=${name}">下载</a><br>
+		</c:forEach>
 	</center>
 </body>
 </html>
