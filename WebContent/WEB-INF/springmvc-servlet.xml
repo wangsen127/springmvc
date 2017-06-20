@@ -18,6 +18,12 @@
     <!-- mvc:annotation-driven -->
     <mvc:annotation-driven conversion-service="conversionService" validator="validator">
     </mvc:annotation-driven>
+    
+    <!--
+           让springmvc不拦截静态资源 
+	<mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
+     -->
+	
 	
 	<!-- 日期类型转换器 -->
 	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
@@ -39,7 +45,7 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
    
-    <!-- 配置拦截器 -->
+    <!-- 配置拦截器  -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
@@ -52,6 +58,7 @@
 			<bean class="com.mvc.interceptor.HelloInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>    
+   
     
     <!-- 数据校验框架 -->
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">

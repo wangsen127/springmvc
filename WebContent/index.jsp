@@ -14,6 +14,7 @@
 	<a href="showUpload.do">测试文件上传</a><br>
 	<a href="showUpload2.do">测试多文件上传</a><br>
 	<a href="showDownload.do">测试文件下载</a><br>
+	<a href="showJson.do">测试json</a><br>
 	</center>
 </body>
 </html>
