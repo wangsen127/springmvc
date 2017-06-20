@@ -53,10 +53,10 @@
 			<bean class="com.mvc.interceptor.EncodeInterceptor"/>
 		</mvc:interceptor>
 		
-		<mvc:interceptor>
+		<!-- <mvc:interceptor>
 			<mvc:mapping path="/*.do"/>
 			<bean class="com.mvc.interceptor.HelloInterceptor"/>
-		</mvc:interceptor>
+		</mvc:interceptor> -->
 	</mvc:interceptors>    
    
     

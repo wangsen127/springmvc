@@ -17,7 +17,7 @@ public class JsonController {
 	}
 	
 	@RequestMapping("/json1.do")
-	public @ResponseBody Dept json1(Dept dept){
+	public @ResponseBody Dept json1(Dept dept) throws Exception{
 		
 		System.out.println("json1.....");
 		
@@ -25,9 +25,17 @@ public class JsonController {
 	}
 	
 	@RequestMapping(value="/json2.do")
-	public @ResponseBody Dept json2(@RequestBody Dept dept){
+	public @ResponseBody Dept json2(@RequestBody Dept dept) throws Exception{
 		
 		System.out.println("json2.....");
+		
+		return dept;
+	}
+	
+	@RequestMapping(value="/json3.do")
+	public @ResponseBody Dept json3(Dept dept) throws Exception{
+		
+		System.out.println("json3.....");
 		
 		return dept;
 	}

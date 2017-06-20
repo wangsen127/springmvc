@@ -1,7 +1,6 @@
 package com.mvc.pojo;
 
 public class Dept {
-	
 	private Integer did;
 	private String dname;
 	public Integer getDid() {
